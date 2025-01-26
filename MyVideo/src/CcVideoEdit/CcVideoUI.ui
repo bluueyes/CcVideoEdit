@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CcVideoUIClass</class>
+ <widget class="QWidget" name="CcVideoUIClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CcVideoUI</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#CcVideoUIClass
+{
+    background-color: #606060; /* 浅灰色背景 */
+    border-radius: 15px; /* 圆角 */
+    border: 2px solid black; /* 黑色边框 */
+}
+
+#Close_btn {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #ff7f7f, stop: 1 #ff0000); /* 从上到下的渐变 */
+    border-radius: 8px; /* 圆角 */
+    color: white; /* 设置文字颜色为白色 */
+    padding: 3px; /* 设置内边距 */
+    font-size: 11px; /* 设置字体大小 */
+    font-weight: bold; /* 设置字体加粗 */
+}
+
+#Close_btn:hover {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                                      stop: 0 #ff6666, stop: 1 #cc0000); /* 悬停时红色更深 */
+}
+
+#Close_btn:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                                      stop: 0 #ff4d4d, stop: 1 #990000); /* 按下时红色更深 */
+
+}
+
+/* 默认状态：从上到下，白色到黑色的渐变色 */
+QPushButton {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,  /* 垂直渐变方向 */
+        stop:0 #a0a0a0, stop:0.4 #505050, stop:0.6 #505050, stop:1 #a0a0a0
+    );
+    border: 2px solid #a0a0a0;     /* 黑色边框 */
+    border-radius: 5px;         /* 圆角 */
+    color: white;                /* 文字颜色 */
+    padding: 3px;               /* 内边距 */
+    font-size: 11px;             /* 字体大小 */
+    font-weight: bold;           /* 字体加粗 */
+}
+
+/* 鼠标悬停状态：从上到下，黑色到白色的渐变色（与默认状态取反） */
+QPushButton:hover {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,  /* 垂直渐变方向 */
+        stop:0 #505050, stop:0.4 #a0a0a0, stop:0.6 #a0a0a0, stop:1 #505050
+    );
+    color: white;                /* 文字颜色 */
+}
+
+/* 按下状态：从上到下，灰色到深灰色的渐变色 */
+QPushButton:pressed {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,  /* 垂直渐变方向 */
+        stop:0 #505050,          /* 顶部灰色 */
+        stop:0.5 #808080,        /* 中间灰色 */
+        stop:1 #505050           /* 底部深灰色 */
+    );
+    color: #a0a0a0;                /* 文字颜色 */
+    padding: 11px 9px 9px 11px;  /* 模拟按下效果 */
+    border: 2px solid #404040;   /* 边框颜色变深 */
+}</string>
+  </property>
+  <widget class="QPushButton" name="Close_btn">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>0</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>×</string>
+   </property>
+  </widget>
+  <widget class="CcVideoWidget" name="src1Video">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>300</width>
+     <height>200</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Open_btn">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>250</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>打 开</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CcVideoWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>ccvideowidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="CcVideoUI.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Close_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>CcVideoUIClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>775</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Open_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>CcVideoUIClass</receiver>
+   <slot>Open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>380</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Open()</slot>
+ </slots>
+</ui>
