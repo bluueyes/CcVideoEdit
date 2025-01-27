@@ -67,6 +67,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\..\lib</AdditionalLibraryDirectories>
@@ -105,6 +106,8 @@
     <QtRcc Include="CcVideoUI.qrc" />
     <QtUic Include="CcVideoUI.ui" />
     <QtMoc Include="CcVideoUI.h" />
+    <ClCompile Include="CcFilter.cpp" />
+    <ClCompile Include="CcImagePro.cpp" />
     <ClCompile Include="CcVideoThread.cpp" />
     <ClCompile Include="CcVideoUI.cpp" />
     <ClCompile Include="CcVideoWidget.cpp" />
@@ -112,7 +115,11 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CcVideoThread.h" />
-    <ClInclude Include="CcVideoWidget.h" />
+    <QtMoc Include="CcVideoWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CcFilter.h" />
+    <ClInclude Include="CcImagePro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

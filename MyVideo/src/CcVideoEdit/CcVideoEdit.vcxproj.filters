@@ -46,15 +46,27 @@
     <ClCompile Include="CcVideoThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CcVideoWidget.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="CcImagePro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CcFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CcVideoThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="CcVideoWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CcImagePro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CcFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
