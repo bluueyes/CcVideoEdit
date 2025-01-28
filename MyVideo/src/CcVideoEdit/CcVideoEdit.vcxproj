@@ -106,6 +106,7 @@
     <QtRcc Include="CcVideoUI.qrc" />
     <QtUic Include="CcVideoUI.ui" />
     <QtMoc Include="CcVideoUI.h" />
+    <ClCompile Include="CcAudio.cpp" />
     <ClCompile Include="CcFilter.cpp" />
     <ClCompile Include="CcImagePro.cpp" />
     <ClCompile Include="CcVideoThread.cpp" />
@@ -118,6 +119,7 @@
     <QtMoc Include="CcVideoWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CcAudio.h" />
     <ClInclude Include="CcFilter.h" />
     <ClInclude Include="CcImagePro.h" />
   </ItemGroup>

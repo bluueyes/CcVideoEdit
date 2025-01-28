@@ -19,7 +19,7 @@ enum TaskType {
 	TASK_GRAY,
 	TASK_MARK,
 	TASK_BLEND,
-
+	TASK_MERGE,
 };
 struct Task {
 	TaskType type;

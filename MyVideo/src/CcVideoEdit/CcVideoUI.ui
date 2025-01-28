@@ -124,10 +124,10 @@ QLabel{
   <widget class="QPushButton" name="Close_btn">
    <property name="geometry">
     <rect>
-     <x>770</x>
+     <x>780</x>
      <y>0</y>
-     <width>31</width>
-     <height>31</height>
+     <width>21</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -141,17 +141,17 @@ QLabel{
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>30</y>
+     <y>20</y>
      <width>380</width>
-     <height>280</height>
+     <height>261</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="Open_btn">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>320</y>
+     <x>410</x>
+     <y>300</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -164,7 +164,7 @@ QLabel{
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>310</y>
+     <y>300</y>
      <width>381</width>
      <height>18</height>
     </rect>
@@ -182,7 +182,7 @@ QLabel{
      <x>330</x>
      <y>350</y>
      <width>461</width>
-     <height>236</height>
+     <height>241</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -210,8 +210,194 @@ QLabel{
        <property name="verticalSpacing">
         <number>2</number>
        </property>
-       <item row="8" column="3">
-        <widget class="QSpinBox" name="clip_y">
+       <item row="7" column="3">
+        <widget class="QSpinBox" name="pydown_box">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>图像镜像</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>图像裁剪(X,Y,W,H)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="4">
+        <widget class="QDoubleSpinBox" name="mark_a">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2" colspan="2">
+        <widget class="QComboBox" name="flip_box">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>25</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>不处理</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>左右</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>上下</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>上下左右</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>亮度[0~100]</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="3">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>图像金字塔(高斯、拉普拉斯)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3">
+        <widget class="QSpinBox" name="mark_y">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4" colspan="2">
+        <widget class="QPushButton" name="Set_btn">
+         <property name="minimumSize">
+          <size>
+           <width>65</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>设置</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="4">
+        <widget class="QSpinBox" name="pyup_box">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="2">
+        <widget class="QPushButton" name="mark_btn">
+         <property name="text">
+          <string>水印(x,y,α)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4">
+        <widget class="QSpinBox" name="clip_w">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2" colspan="2">
+        <widget class="QComboBox" name="rotate_box">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>25</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>90</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>180</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>270</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="3">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>图像尺寸(宽、高)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QSpinBox" name="clip_x">
          <property name="minimumSize">
           <size>
            <width>60</width>
@@ -230,6 +416,65 @@ QLabel{
            <width>60</width>
            <height>23</height>
           </size>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="3">
+        <widget class="QSpinBox" name="clip_y">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>图像旋转</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QSpinBox" name="mark_x">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QSpinBox" name="height_box">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="5">
+        <widget class="QSpinBox" name="clip_h">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
          </property>
         </widget>
        </item>
@@ -265,149 +510,6 @@ QLabel{
          </property>
         </widget>
        </item>
-       <item row="5" column="4">
-        <widget class="QSpinBox" name="height_box">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>9999</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="4">
-        <widget class="QSpinBox" name="clip_w">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>9999</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4" colspan="2">
-        <widget class="QPushButton" name="Set_btn">
-         <property name="minimumSize">
-          <size>
-           <width>65</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>设置</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2" colspan="2">
-        <widget class="QComboBox" name="rotate_box">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>25</height>
-          </size>
-         </property>
-         <item>
-          <property name="text">
-           <string>0</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>90</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>180</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>270</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="2">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>图像裁剪(X,Y,W,H)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="4">
-        <widget class="QSpinBox" name="pyup_box">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QSpinBox" name="clip_x">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>9999</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="5">
-        <widget class="QSpinBox" name="clip_h">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>9999</number>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="3">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>图像尺寸(宽、高)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>图像镜像</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>图像旋转</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>亮度[0~100]</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0" colspan="2">
         <widget class="QLabel" name="label_2">
          <property name="text">
@@ -415,58 +517,8 @@ QLabel{
          </property>
         </widget>
        </item>
-       <item row="7" column="3">
-        <widget class="QSpinBox" name="pydown_box">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0" colspan="3">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>图像金字塔(高斯、拉普拉斯)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2" colspan="2">
-        <widget class="QComboBox" name="flip_box">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>25</height>
-          </size>
-         </property>
-         <item>
-          <property name="text">
-           <string>不处理</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>左右</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>上下</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>上下左右</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="9" column="4">
-        <widget class="QDoubleSpinBox" name="mark_a">
+       <item row="10" column="2">
+        <widget class="QDoubleSpinBox" name="blend_box">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -480,40 +532,14 @@ QLabel{
           <double>1.000000000000000</double>
          </property>
          <property name="value">
-          <double>1.000000000000000</double>
+          <double>0.500000000000000</double>
          </property>
         </widget>
        </item>
-       <item row="9" column="3">
-        <widget class="QSpinBox" name="mark_y">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>9999</number>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="2">
-        <widget class="QSpinBox" name="mark_x">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximum">
-          <number>9999</number>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="2">
-        <widget class="QPushButton" name="mark_btn">
+       <item row="10" column="0" colspan="2">
+        <widget class="QPushButton" name="blend_btn">
          <property name="text">
-          <string>水印(x,y,α)</string>
+          <string>融合视频</string>
          </property>
         </widget>
        </item>
@@ -526,17 +552,17 @@ QLabel{
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>30</y>
+     <y>20</y>
      <width>380</width>
-     <height>280</height>
+     <height>261</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="Export_btn">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>320</y>
+     <x>490</x>
+     <y>300</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -548,8 +574,8 @@ QLabel{
   <widget class="QPushButton" name="Play_btn">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>320</y>
+     <x>170</x>
+     <y>330</y>
      <width>71</width>
      <height>51</height>
     </rect>
@@ -561,8 +587,8 @@ QLabel{
   <widget class="QPushButton" name="Stop_btn">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>320</y>
+     <x>240</x>
+     <y>330</y>
      <width>91</width>
      <height>51</height>
     </rect>
@@ -574,8 +600,8 @@ QLabel{
   <widget class="QComboBox" name="color_btn">
    <property name="geometry">
     <rect>
-     <x>682</x>
-     <y>320</y>
+     <x>700</x>
+     <y>300</y>
      <width>81</width>
      <height>25</height>
     </rect>
@@ -601,48 +627,70 @@ QLabel{
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>370</y>
+     <y>380</y>
      <width>320</width>
      <height>220</height>
     </rect>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="blend_box">
+  <widget class="QPushButton" name="merge_btn">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>20</x>
      <y>340</y>
-     <width>68</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>23</height>
-    </size>
-   </property>
-   <property name="minimum">
-    <double>0.000000000000000</double>
-   </property>
-   <property name="maximum">
-    <double>1.000000000000000</double>
-   </property>
-   <property name="value">
-    <double>0.500000000000000</double>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="blend_btn">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>340</y>
-     <width>61</width>
-     <height>24</height>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>融合视频</string>
+    <string>合并视频</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="left_silde">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>280</y>
+     <width>381</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::handle:horizontal{
+	  background: #b0b0b0;
+      border-radius: 4px;
+}</string>
+   </property>
+   <property name="maximum">
+    <number>999</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="right_slide">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>320</y>
+     <width>381</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::handle:horizontal{
+	  background: #b0b0b0;
+      border-radius: 4px;
+}</string>
+   </property>
+   <property name="maximum">
+    <number>999</number>
+   </property>
+   <property name="value">
+    <number>999</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
    </property>
   </widget>
  </widget>
@@ -730,7 +778,7 @@ QLabel{
    <hints>
     <hint type="sourcelabel">
      <x>199</x>
-     <y>319</y>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
      <x>436</x>
@@ -746,7 +794,7 @@ QLabel{
    <hints>
     <hint type="sourcelabel">
      <x>779</x>
-     <y>391</y>
+     <y>390</y>
     </hint>
     <hint type="destinationlabel">
      <x>622</x>
@@ -777,8 +825,8 @@ QLabel{
    <slot>Play()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>345</y>
+     <x>213</x>
+     <y>355</y>
     </hint>
     <hint type="destinationlabel">
      <x>215</x>
@@ -809,8 +857,8 @@ QLabel{
    <slot>Mark()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>380</x>
-     <y>565</y>
+     <x>391</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>189</x>
@@ -825,12 +873,60 @@ QLabel{
    <slot>Blend()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>38</x>
-     <y>353</y>
+     <x>369</x>
+     <y>575</y>
     </hint>
     <hint type="destinationlabel">
      <x>254</x>
      <y>-23</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>merge_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>CcVideoUIClass</receiver>
+   <slot>Merge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>-100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>left_silde</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>CcVideoUIClass</receiver>
+   <slot>LeftSide(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>290</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>-49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right_slide</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>CcVideoUIClass</receiver>
+   <slot>RightSide(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>275</x>
+     <y>-71</y>
     </hint>
    </hints>
   </connection>
@@ -846,5 +942,8 @@ QLabel{
   <slot>Pause()</slot>
   <slot>Mark()</slot>
   <slot>Blend()</slot>
+  <slot>Merge()</slot>
+  <slot>LeftSide(int)</slot>
+  <slot>RightSide(int)</slot>
  </slots>
 </ui>

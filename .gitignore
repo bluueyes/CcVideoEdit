@@ -8,6 +8,9 @@ x64
 *.lo
 *.o
 *.obj
+*.mp3
+*.mp4
+*.avi
 
 # Precompiled Headers
 *.gch

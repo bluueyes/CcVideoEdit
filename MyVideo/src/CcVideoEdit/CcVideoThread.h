@@ -55,6 +55,18 @@ public:
 
 	int width = 0;
 	int height = 0;
+	int width2 = 0;
+	int height2 = 0;
+	int totalMs = 0;
+	std::string src1file;
+	std::string dstfile;
+
+	int begin = 0;
+	int end = 999;
+
+	void SetBegin(double pos);
+	void SetEnd(double pos);
+
 signals:
 	//œ‘ æ‘≠ ”∆µ1ÕºœÒ
 	void ViewImage1(cv::Mat mat);

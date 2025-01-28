@@ -113,6 +113,24 @@ void CcImagePro::Blend(double a)
 	addWeighted(src2, a, dst, 1 - a, 0, dst);
 }
 
+void CcImagePro::Merge()
+{
+	if (dst.empty()) return;
+	if (src2.empty()) return;
+	if (src2.size() != dst.size()) {
+		int w = src2.cols * (double)src2.rows / (double)dst.rows;
+		resize(src2, src2, Size(w,dst.rows));
+	}
+	int dw = dst.cols + src2.cols;
+	int dh = dst.rows;
+	dst = Mat(Size(dw, dh), dst.type());
+	Mat r1 = dst(Rect(0, 0, src1.cols, dh));
+	Mat r2 = dst(Rect(src1.cols, 0, src2.cols, dh));
+	src1.copyTo(r1);
+	src2.copyTo(r2);
+
+}
+
 CcImagePro::CcImagePro()
 {
 }

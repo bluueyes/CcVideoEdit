@@ -9,6 +9,8 @@
 #include <opencv2\imgproc.hpp>
 #include <opencv2\opencv.hpp>
 #include "CcFilter.h"
+#include "CcAudio.h"
+#include <QFile>
 
 using namespace cv;
 static bool pressSlider = false;
@@ -16,6 +18,7 @@ static bool isExport = false;
 static bool isColor = true;
 static bool isMark = false;
 static bool isBlend = false;
+static bool isMerge = false;
 
 CcVideoUI::CcVideoUI(QWidget *parent)
     : QWidget(parent)
@@ -66,6 +69,23 @@ void CcVideoUI::SetPos(int pos)
     if (pos < 10) return;
     CcVideoThread::GetInstance()->Seek((double)pos / 1000.);
 
+}
+
+void CcVideoUI::LeftSide(int pos)
+{
+    if (pos > ui.right_slide->value()) {
+		pos = ui.right_slide->value();
+    }
+    CcVideoThread::GetInstance()->SetBegin((double)pos / 1000.);
+    SetPos(pos);
+}
+
+void CcVideoUI::RightSide(int pos)
+{
+    if (pos < ui.left_silde->value()) {
+		pos = ui.left_silde->value();
+    }
+	CcVideoThread::GetInstance()->SetEnd((double)pos / 1000.);
 }
 
 void CcVideoUI::Set()
@@ -122,7 +142,7 @@ void CcVideoUI::Set()
     //调整图像尺寸大小
     double w = ui.width_box->value();
     double h = ui.height_box->value();
-    if (!isClip && !isPy && ui.width_box->value() > 0 && ui.height_box->value() > 0) {
+    if (!isMerge && !isClip && !isPy && ui.width_box->value() > 0 && ui.height_box->value() > 0) {
         CcFilter::Get()->Add(Task{ TASK_RESIZE,{w,h} });
     }
 
@@ -168,12 +188,22 @@ void CcVideoUI::Set()
         
     }
 
+    //融合
     if (isBlend) {
         double a = ui.blend_box->value();
         CcFilter::Get()->Add(Task{ TASK_BLEND ,{a} });
 
     }
 
+   //合并
+    if (isMerge) {
+		double h2 = CcVideoThread::GetInstance()->height2;
+		double h1 = CcVideoThread::GetInstance()->height;
+        int w = CcVideoThread::GetInstance()->width2 * (h2 / h1);
+        CcFilter::Get()->Add(Task{ TASK_MERGE });
+        ui.width_box->setValue(CcVideoThread::GetInstance()->width + w);
+        ui.height_box->setValue(h1);
+    }
 }
 
 void CcVideoUI::Export()
@@ -202,6 +232,23 @@ void CcVideoUI::ExportEnd()
 {
     isExport = false;
     ui.Export_btn->setText("Export");
+
+    std::string src = CcVideoThread::GetInstance()->src1file;
+    std::string dst = CcVideoThread::GetInstance()->dstfile;
+    int ss = 0;
+    int t = 0;
+	ss=CcVideoThread::GetInstance()->totalMs * (double)ui.left_silde->value()/1000.;
+	int end = CcVideoThread::GetInstance()->totalMs * (double)ui.right_slide->value() / 1000.;
+
+    t = end - ss;
+
+    //处理音频
+    CcAudio::GetInstance()->ExPortA(src,src+".mp3",ss,t);
+    std::string temp = dst + ".avi";
+    QFile::remove(temp.c_str());
+    QFile::rename(dst.c_str(),temp.c_str());
+
+	CcAudio::GetInstance()->Merge(temp, src + ".mp3", dst);
 }
 
 void CcVideoUI::Play()
@@ -223,6 +270,8 @@ void CcVideoUI::Pause()
 void CcVideoUI::Mark()
 {
     isMark = false;
+    isBlend = false;
+    isMerge = false;
     QString name = QFileDialog::getOpenFileName(this, "select picture");
     if (name.isEmpty()) {
         std::cout << "name empty" << std::endl;
@@ -242,6 +291,7 @@ void CcVideoUI::Blend()
 {
     isMark = false;
     isBlend = false;
+    isMerge = false;
     QString name = QFileDialog::getOpenFileName(this, "select video");
     if (name.isEmpty()) {
         std::cout << "name empty" << std::endl;
@@ -249,6 +299,20 @@ void CcVideoUI::Blend()
     }
     std::string file = name.toLocal8Bit().data();
     isBlend=CcVideoThread::GetInstance()->Open2(file);
+}
+
+void CcVideoUI::Merge()
+{
+    isMark = false;
+    isBlend = false;
+    isMerge = false;
+    QString name = QFileDialog::getOpenFileName(this, "select video");
+    if (name.isEmpty()) {
+        std::cout << "name empty" << std::endl;
+        return;
+    }
+    std::string file = name.toLocal8Bit().data();
+    isMerge = CcVideoThread::GetInstance()->Open2(file);
 }
 
 

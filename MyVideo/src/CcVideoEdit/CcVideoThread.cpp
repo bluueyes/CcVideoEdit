@@ -32,8 +32,12 @@ bool CcVideoThread::Open(const std::string& file)
 	fps = cap1.get(CAP_PROP_FPS);
 	width = cap1.get(CAP_PROP_FRAME_WIDTH);
 	height = cap1.get(CAP_PROP_FRAME_HEIGHT);
-
 	if (fps <= 0) fps = 25;
+	src1file = file;
+
+	double count = cap1.get(CAP_PROP_FRAME_COUNT);
+	totalMs = (count /(double)fps) * 1000;
+	
 	return true;
 }
 
@@ -52,8 +56,8 @@ bool CcVideoThread::Open2(const std::string& file)
 		return re;
 	}
 	//fps = cap1.get(CAP_PROP_FPS);
-	//width = cap1.get(CAP_PROP_FRAME_WIDTH);
-	//height = cap1.get(CAP_PROP_FRAME_HEIGHT);
+	width2 = cap2.get(CAP_PROP_FRAME_WIDTH);
+	height2 = cap2.get(CAP_PROP_FRAME_HEIGHT);
 	//if (fps <= 0) fps = 25;
 	return true;
 }
@@ -74,6 +78,19 @@ double CcVideoThread::GetPos()
 	return pos;
 }
 
+void CcVideoThread::SetBegin(double pos) {
+	std::lock_guard<std::mutex> lock(_mutex);
+	double count = cap1.get(CAP_PROP_FRAME_COUNT);
+	int frame = pos * count;
+	begin = frame;
+}
+void CcVideoThread::SetEnd(double pos)
+{
+	std::lock_guard<std::mutex> lock(_mutex);
+	double count = cap1.get(CAP_PROP_FRAME_COUNT);
+	int frame = pos * count;
+	end = frame;
+}
 
 
 CcVideoThread::CcVideoThread()
@@ -107,7 +124,7 @@ bool CcVideoThread::Seek(double pos)
 
 bool CcVideoThread::StartSave(const std::string filename, int width, int height,bool isColor)
 {
-	Seek(0);
+	Seek(begin);
 
 	if (!cap1.isOpened()) return false;
 	if (width <= 0) width = cap1.get(CAP_PROP_FRAME_WIDTH);
@@ -118,6 +135,7 @@ bool CcVideoThread::StartSave(const std::string filename, int width, int height,
 		std::cout << "start save filed " << std::endl;
 	}
 	this->isWrite = true;
+	dstfile = filename;
 	return true;
 
 }
@@ -165,8 +183,8 @@ void CcVideoThread::run()
 
 			_cond.wait(lock, [&]() {
 				if (isexit) return true;
-				
-				bool ret=(cap1.read(mat1)) && !(mat1.empty());	//读取一帧视频，解码并颜色转换
+				double cur = cap1.get(CAP_PROP_POS_FRAMES);
+				bool ret=(!(cur>=end) && cap1.read(mat1)) && !(mat1.empty());	//读取一帧视频，解码并颜色转换
 				//导出到结尾位置，停止导出
 				if (!ret&&isWrite) {
 					StopSave();

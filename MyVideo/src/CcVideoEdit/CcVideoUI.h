@@ -18,6 +18,8 @@ public slots:
     void SliderRelease();
     //滑动条拖动
     void SetPos(int);
+    void LeftSide(int);
+    void RightSide(int);
     //设置过滤器
     void Set();
     //导出视频
@@ -32,6 +34,8 @@ public slots:
     void Mark();    
     //融合
     void Blend();
+    //合并
+	void Merge();
 
 private:
     Ui::CcVideoUIClass ui;

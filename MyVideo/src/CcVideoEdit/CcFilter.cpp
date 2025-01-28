@@ -55,6 +55,8 @@ public:
             case TASK_BLEND:
                 pro.Blend(tasks[i].para[0]);
                 break;
+            case TASK_MERGE:
+                pro.Merge();
             default:
                 break;
             }
